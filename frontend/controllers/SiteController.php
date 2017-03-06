@@ -18,6 +18,13 @@ use frontend\models\ContactForm;
  */
 class SiteController extends Controller
 {
+    public function actionAlbum()
+    {
+        echo '*** frontend ***';
+        die;
+        //return $this->render('index');
+    }
+
     /**
      * @inheritdoc
      */

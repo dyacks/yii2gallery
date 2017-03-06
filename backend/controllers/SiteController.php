@@ -63,6 +63,13 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionAlbum()
+    {
+        echo '*** backend ***';
+        die;
+        //return $this->render('index');
+    }
+
     /**
      * Login action.
      *

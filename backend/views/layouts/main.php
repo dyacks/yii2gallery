@@ -59,13 +59,16 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
                     <div class="menu_section">
-                        <h3>General</h3>
+                        <h3>Админ</h3>
                         <?=
                         \yiister\gentelella\widgets\Menu::widget(
                             [
                                 "items" => [
-                                    ["label" => "Home", "url" => "/", "icon" => "home"],
-                                    ["label" => "Layout", "url" => ["site/layout"], "icon" => "files-o"],
+                                    //["label" => "Home", "url" => "/", "icon" => "home"],
+                                    ["label" => "Главная", "url" => "/", "icon" => "home"],
+                                    //["label" => "Layout", "url" => ["site/layout"], "icon" => "files-o"],
+                                    //["label" => "Добавить Альбом", "url" => ["?r=site/Album"], "icon" => "files-o"],
+                                    ["label" => "Добавить Альбом", "url" => ["/site/Album"], "icon" => "files-o"],
                                     ["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
                                     [
                                         "label" => "Widgets",
