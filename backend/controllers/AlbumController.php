@@ -83,6 +83,10 @@ class AlbumController extends Controller
         return $this->render('createAlbum', ['model' => $model]);
     }
 
+    public function actionSort(){
+        return $this->render('sortAlbums');
+    }
+
     /**
      * Login action.
      *

@@ -37,7 +37,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
             <div class="left_col scroll-view">
 
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="/" class="site_title"><i class="fa fa-camera"></i> <span>Photo Gallery</span></a>
+                    <a href="/admin" class="site_title"><i class="fa fa-camera"></i> <span>Photo Gallery</span></a>
                 </div>
                 <div class="clearfix"></div>
 
@@ -48,7 +48,8 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>John Doe</h2>
+                        <br />
+                        <?= \Yii::$app->user->identity->username ?>
                     </div>
                 </div>
                 <!-- /menu prile quick info -->
@@ -65,11 +66,12 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                             [
                                 "items" => [
                                     //["label" => "Home", "url" => "/", "icon" => "home"],
-                                    ["label" => "Просмотр сайта", "url" => "/", "icon" => "home"],
+                                    ["label" => "Просмотр галереи", "url" => "/", "icon" => "home"],
                                     //["label" => "Layout", "url" => ["site/layout"], "icon" => "files-o"],
                                     //["label" => "Добавить Альбом", "url" => ["?r=site/Album"], "icon" => "files-o"],
                                     ["label" => "Добавить Альбом", "url" => ["album/add"], "icon" => "files-o"],
-                                    ["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
+                                    ["label" => "Сортировать Альбомы", "url" => ["album/sort"], "icon" => "th"],
+                                    //["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
                                     [
                                         "label" => "Widgets",
                                         "icon" => "th",
@@ -168,7 +170,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="http://placehold.it/128x128" alt="">John Doe
+                                <img src="http://placehold.it/128x128" alt=""><?= \Yii::$app->user->identity->username ?>
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -191,9 +193,9 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                         <li role="presentation" class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
+                                <!--span class="badge bg-green">6</span-->
                             </a>
-                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                            <!--ul-- id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                 <li>
                                     <a>
                       <span class="image">
@@ -258,7 +260,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                         </a>
                                     </div>
                                 </li>
-                            </ul>
+                            </ul-->
                         </li>
 
                     </ul>
