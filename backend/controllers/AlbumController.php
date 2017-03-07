@@ -63,18 +63,8 @@ class AlbumController extends Controller
     }
 
 
-    public function actionAdd()
-    {
+    public function actionAdd(){
         $model = new Album();
-/*
-        if (Yii::$app->request->isPost) {
-            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-            if ($model->upload()) {
-                die('file upload');
-                // file is uploaded successfully
-                return;
-            }
-        }*/
         return $this->render('createAlbum', ['model' => $model]);
     }
 
@@ -82,17 +72,15 @@ class AlbumController extends Controller
 
     public function actionUpload(){
         $model = new Album();
-
         if (Yii::$app->request->isPost) {
             $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
             if ($model->upload()) {
-                // file is uploaded successfully
-                //die(var_dump($model));
-                return $this->render('success');
+                $session = Yii::$app->session;
+                $session->addFlash('info', 'Вы успешно добавили новый альбом');
+                return $this->render('sortAlbums', ['model' => $model]);
             }
         }
-
-       // return $this->render('createAlbum', ['model' => $model]);
+        return $this->render('createAlbum', ['model' => $model]);
     }
 
     /**
