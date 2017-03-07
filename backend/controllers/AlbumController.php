@@ -1,16 +1,19 @@
 <?php
 namespace backend\controllers;
 
+use backend\models\Album;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use yii\web\UploadedFile;
+//use app\models\UploadForm;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class AlbumController extends Controller
 {
     /**
      * @inheritdoc
@@ -20,13 +23,9 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'only' => ['album'],
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -64,11 +63,36 @@ class SiteController extends Controller
     }
 
 
-    public function actionAlbum()
+    public function actionAdd()
     {
-        echo '*** backend ***';
-        die;
-        //return $this->render('index');
+        $model = new Album();
+/*
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                die('file upload');
+                // file is uploaded successfully
+                return;
+            }
+        }*/
+        return $this->render('createAlbum', ['model' => $model]);
+    }
+
+
+
+    public function actionUpload(){
+        $model = new Album();
+
+        if (Yii::$app->request->isPost) {
+            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
+            if ($model->upload()) {
+                // file is uploaded successfully
+                //die(var_dump($model));
+                return $this->render('success');
+            }
+        }
+
+       // return $this->render('createAlbum', ['model' => $model]);
     }
 
     /**

@@ -37,7 +37,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
             <div class="left_col scroll-view">
 
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                    <a href="/" class="site_title"><i class="fa fa-camera"></i> <span>Photo Gallery</span></a>
                 </div>
                 <div class="clearfix"></div>
 
@@ -65,10 +65,10 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                             [
                                 "items" => [
                                     //["label" => "Home", "url" => "/", "icon" => "home"],
-                                    ["label" => "Главная", "url" => "/", "icon" => "home"],
+                                    ["label" => "Просмотр сайта", "url" => "/", "icon" => "home"],
                                     //["label" => "Layout", "url" => ["site/layout"], "icon" => "files-o"],
                                     //["label" => "Добавить Альбом", "url" => ["?r=site/Album"], "icon" => "files-o"],
-                                    ["label" => "Добавить Альбом", "url" => ["/site/Album"], "icon" => "files-o"],
+                                    ["label" => "Добавить Альбом", "url" => ["album/add"], "icon" => "files-o"],
                                     ["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
                                     [
                                         "label" => "Widgets",
@@ -293,13 +293,13 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
         </div>
         <!-- /page content -->
         <!-- footer content -->
-        <footer>
+        <!--footer>
             <div class="pull-right">
                 Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com" rel="nofollow" target="_blank">Colorlib</a><br />
                 Extension for Yii framework 2 by <a href="http://yiister.ru" rel="nofollow" target="_blank">Yiister</a>
             </div>
             <div class="clearfix"></div>
-        </footer>
+        </footer-->
         <!-- /footer content -->
     </div>
 
