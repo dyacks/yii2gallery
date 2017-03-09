@@ -2,10 +2,10 @@
 
 namespace backend\models;
 
-use yii\base\Model;
+use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
 
-class Album extends Model
+class Album extends ActiveRecord
 {
     public $name;
     public $date;
