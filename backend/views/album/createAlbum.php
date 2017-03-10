@@ -41,13 +41,12 @@ use yii\jui\DatePicker;
             ->textarea(['rows' => 5, 'cols' => 5])
             ->label('Описание альбома') ?>
 
-            <?= $form->field($model, 'image')->fileInput([
-                'multiple' => false,
+            <?= $form->field($model, 'image[]')->fileInput([
+                'multiple' => true,
                 'accept' => 'image/*',
             ]) ?>
 
             <!--?= $form->field($model, 'image')->fileInput() ?-->
-
 
             <div class="form-group">
                 <?= Html::submitButton('Создать альбом', ['class' => 'btn btn-primary']) ?>

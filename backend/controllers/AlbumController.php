@@ -72,16 +72,19 @@ class AlbumController extends Controller
         $model = new Album();
         if (Yii::$app->request->isPost) {
             $request = Yii::$app->request->post('Album');
+ //var_dump($request);die;
             $model->name = $request['name'];
             $model->date = $request['date'];
             $model->description = $request['description'];
             $model->save();
 
            // die('***');
-
-            $model->image = UploadedFile::getInstances($model, 'image');
+           // $model = new Album();
+            // $model->image = UploadedFile::getInstance($model, 'image');
+            $model->image = UploadedFile::getInstances($model, 'image'); // после saveAs() - NO!
 
             if ($model->upload()) {
+
                 $session = Yii::$app->session;
                 $session->addFlash('info', 'Вы успешно добавили новый альбом');
 /*

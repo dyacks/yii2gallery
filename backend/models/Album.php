@@ -55,7 +55,8 @@ class Album extends ActiveRecord {
             [['date'], 'safe'],
             [['name'], 'string', 'max' => 32],
             [['description'], 'string', 'max' => 255],
-            [['image'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+           // [['image'], 'file', 'extensions' => 'png, jpg'],
+           // [['image'], 'file', 'extensions' => 'png, jpg'],
             //[['imageFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 30],
             //[['gallery'], 'file', 'extensions' => 'png, jpg', 'maxFiles' => 9],
         ];
@@ -80,18 +81,18 @@ class Album extends ActiveRecord {
      */
     public function upload(){
         if ($this->validate()) {
-            $path = __DIR__.'/../../uploads/store/' . $this->image->baseName . '.' . $this->image->extension;
-            $this->image->saveAs($path);
-            /*
-            foreach ($this->image as $file) {
-                $path = __DIR__.'/../../uploads/store/' . $file->baseName . '.' . $file->extension;
-                //$path = 'uploads/store/' . $file->baseName . '.' . $file->extension;
+            //$path = __DIR__.'/../../uploads/store/' . $this->image->baseName . '.' . $this->image->extension;
+            //$this->image->saveAs($path);
+
+            foreach ($this->image as $img) {
+                $path = __DIR__.'/../../uploads/store/' . $img->baseName . '.' . $img->extension;
+               // $path = __DIR__.'/../../uploads/store/' . $this->image->baseName . '.' . $this->image->extension;
                 // this is call method Resizes
-                $file->saveAs($path);
+                $img->saveAs($path);
                // $file->attachImage($path);
             }
-            //$this->image->attachImage($path);
-            */
+           // $this->image->attachImage($path);
+
 
            // $this->save();
             return true;
