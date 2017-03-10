@@ -1,13 +1,13 @@
 <?php
 namespace backend\controllers;
 
-use backend\models\Album;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use yii\web\UploadedFile;
+use backend\models\Album;
 //use app\models\UploadForm;
 
 /**
@@ -68,15 +68,31 @@ class AlbumController extends Controller
         return $this->render('createAlbum', ['model' => $model]);
     }
 
-
-
     public function actionUpload(){
         $model = new Album();
         if (Yii::$app->request->isPost) {
-            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
+            $request = Yii::$app->request->post('Album');
+            $model->name = $request['name'];
+            $model->date = $request['date'];
+            $model->description = $request['description'];
+            $model->save();
+
+           // die('***');
+
+            $model->image = UploadedFile::getInstances($model, 'image');
+
             if ($model->upload()) {
                 $session = Yii::$app->session;
                 $session->addFlash('info', 'Вы успешно добавили новый альбом');
+/*
+                foreach ($model as $mod) {
+                    echo '----------------';
+                    var_dump($mod);
+                }
+                */
+               // $tmp = $model->save();
+               // die('save = '.$tmp);
+
                 return $this->render('sortAlbums', ['model' => $model]);
             }
         }

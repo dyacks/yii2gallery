@@ -2,44 +2,101 @@
 
 namespace backend\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
 
-class Album extends ActiveRecord
-{
-    public $name;
-    public $date;
-    //public $count;
-    public $description;
+/**
+ * This is the model class for table "album".
+ *
+ * @property integer $id
+ * @property string $name
+ * @property string $date
+ * @property string $description
+ */
+class Album extends ActiveRecord {
 
     /**
      * @var UploadedFile
      */
-    public $imageFiles;
+    public $image;
+   // public $gallery;
 
-
-    public function rules(){
+    /**
+     * @inheritdoc
+     */
+    public static function tableName(){
+        return 'album';
+    }
+/*
+    public function getImages()
+    {
+        return $this->hasMany(Images::className, ['album_id' => 'id']);
+    }
+*/
+    /**
+     * @return array
+     */
+    public function behaviors()
+    {
         return [
-            //[['name', 'date', 'description'], 'required'],
-            //['name', 'string', 'min' => 1, 'max' => 24],
-            ['name', 'default', 'value' => 'default value'],
-            ['date', 'date'],
-            ['description', 'string', 'min' => 12, 'max' => 255],
-            [['imageFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg', 'maxFiles' => 30],
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules(){
+        return [
+            [['name'], 'required'],
+            [['date'], 'safe'],
+            [['name'], 'string', 'max' => 32],
+            [['description'], 'string', 'max' => 255],
+            [['image'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            //[['imageFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 30],
+            //[['gallery'], 'file', 'extensions' => 'png, jpg', 'maxFiles' => 9],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => 'Имя',
+            'date' => 'Дата добавления/изменения',
+            'description' => 'Описание',
+            'image' => 'Картинка',
+        ];
+    }
+
+    /**
+     * @return bool
+     */
     public function upload(){
         if ($this->validate()) {
-            $request = \Yii::$app->request->post('Album');
-            $this->name = $request['name'];
-            $this->date = $request['date'];
-            $this->description = $request['description'];
-            foreach ($this->imageFiles as $file) {
-                $file->saveAs(__DIR__.'/../../uploads/' . $file->baseName . '.' . $file->extension);
+            $path = __DIR__.'/../../uploads/store/' . $this->image->baseName . '.' . $this->image->extension;
+            $this->image->saveAs($path);
+            /*
+            foreach ($this->image as $file) {
+                $path = __DIR__.'/../../uploads/store/' . $file->baseName . '.' . $file->extension;
+                //$path = 'uploads/store/' . $file->baseName . '.' . $file->extension;
+                // this is call method Resizes
+                $file->saveAs($path);
+               // $file->attachImage($path);
             }
+            //$this->image->attachImage($path);
+            */
+
+           // $this->save();
             return true;
         } else {
+          //  var_dump($this->errors); die;
             return false;
         }
     }

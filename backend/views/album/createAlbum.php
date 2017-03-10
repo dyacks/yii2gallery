@@ -13,48 +13,40 @@ use yii\jui\DatePicker;
         </div>
         <div class="panel-body">
 
+            <!--?php
+                var_dump($model);die;
+            ?-->
+
         <?php $form = ActiveForm::begin([
             'method' => 'post',
             'action' => ['album/upload'],
             'options' => [
-            'class' => 'form-horizontal col-lg-8',
-            'enctype' => 'multipart/form-data'
-        ],
+                'class' => 'form-horizontal col-lg-8',
+                'enctype' => 'multipart/form-data'
+            ],
         ]);?>
-
 
         <?= $form->field($model, 'name')
             ->textInput()
             //->hint('Длинна названия должна быть от 1 до 24 символов')
             ->label('Название альбома') ?>
 
-
-
-
             <?= $form->field($model, 'date')->widget(DatePicker::classname(), [
                 'language' => 'ru',
-                'dateFormat' => 'dd-MM-yyyy',
-
+                //'dateFormat' => 'dd-MM-yyyy',
+                'dateFormat' => 'yyyy-MM-dd',
             ]) ?>
-
-            <!--?= $form->field($model, 'date')->widget(DatePicker::className(), [
-                'options' => ['placeholder' => 'TO'],
-                'pluginOptions' => [
-                    'autoclose' => true,
-                    'format' => 'yyyy-mm-dd'
-                ]
-            ]); ?-->
 
         <?= $form->field($model, 'description')
             ->textarea(['rows' => 5, 'cols' => 5])
             ->label('Описание альбома') ?>
 
-
-
-            <?= $form->field($model, 'imageFiles[]')->fileInput([
-                'multiple' => true,
+            <?= $form->field($model, 'image')->fileInput([
+                'multiple' => false,
                 'accept' => 'image/*',
             ]) ?>
+
+            <!--?= $form->field($model, 'image')->fileInput() ?-->
 
 
             <div class="form-group">
