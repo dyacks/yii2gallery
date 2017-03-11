@@ -72,31 +72,17 @@ class AlbumController extends Controller
         $model = new Album();
         if (Yii::$app->request->isPost) {
             $request = Yii::$app->request->post('Album');
- //var_dump($request);die;
             $model->name = $request['name'];
             $model->date = $request['date'];
             $model->description = $request['description'];
-            $model->save();
 
-           // die('***');
-           // $model = new Album();
-            // $model->image = UploadedFile::getInstance($model, 'image');
-            $model->image = UploadedFile::getInstances($model, 'image'); // после saveAs() - NO!
+            $model->save();
+            $model->images = UploadedFile::getInstances($model, 'images');
 
             if ($model->upload()) {
-
                 $session = Yii::$app->session;
                 $session->addFlash('info', 'Вы успешно добавили новый альбом');
-/*
-                foreach ($model as $mod) {
-                    echo '----------------';
-                    var_dump($mod);
-                }
-                */
-               // $tmp = $model->save();
-               // die('save = '.$tmp);
-
-                return $this->render('sortAlbums', ['model' => $model]);
+                return $this->render('sortPhotos', ['model' => $model]);
             }
         }
         return $this->render('createAlbum', ['model' => $model]);

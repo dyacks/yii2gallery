@@ -1,5 +1,5 @@
 <?php
-    $this->title = 'sort albums';
+    $this->title = 'sort photos';
 ?>
 
 <?= $this->render('flash') ?>
@@ -26,7 +26,7 @@
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">-- sort --</a></p>
+        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">-- sort photos --</a></p>
     </div>
 
 </div>

@@ -41,7 +41,7 @@ use yii\jui\DatePicker;
             ->textarea(['rows' => 5, 'cols' => 5])
             ->label('Описание альбома') ?>
 
-            <?= $form->field($model, 'image[]')->fileInput([
+            <?= $form->field($model, 'images[]')->fileInput([
                 'multiple' => true,
                 'accept' => 'image/*',
             ]) ?>

@@ -19,7 +19,7 @@ class Album extends ActiveRecord {
     /**
      * @var UploadedFile
      */
-    public $image;
+    public $images;
    // public $gallery;
 
     /**
@@ -55,8 +55,7 @@ class Album extends ActiveRecord {
             [['date'], 'safe'],
             [['name'], 'string', 'max' => 32],
             [['description'], 'string', 'max' => 255],
-           // [['image'], 'file', 'extensions' => 'png, jpg'],
-           // [['image'], 'file', 'extensions' => 'png, jpg'],
+           // [['images'], 'file', 'extensions' => 'png, jpg'],
             //[['imageFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 30],
             //[['gallery'], 'file', 'extensions' => 'png, jpg', 'maxFiles' => 9],
         ];
@@ -72,7 +71,7 @@ class Album extends ActiveRecord {
             'name' => 'Имя',
             'date' => 'Дата добавления/изменения',
             'description' => 'Описание',
-            'image' => 'Картинка',
+            'images' => 'Картинка',
         ];
     }
 
@@ -81,23 +80,18 @@ class Album extends ActiveRecord {
      */
     public function upload(){
         if ($this->validate()) {
-            //$path = __DIR__.'/../../uploads/store/' . $this->image->baseName . '.' . $this->image->extension;
-            //$this->image->saveAs($path);
-
-            foreach ($this->image as $img) {
+            //$path = __DIR__.'/../../uploads/store/' . $this->images->baseName . '.' . $this->images->extension;
+            //$this->images->saveAs($path);
+            foreach ($this->images as $img) {
                 $path = __DIR__.'/../../uploads/store/' . $img->baseName . '.' . $img->extension;
-               // $path = __DIR__.'/../../uploads/store/' . $this->image->baseName . '.' . $this->image->extension;
+               // $path = __DIR__.'/../../uploads/store/' . $this->images->baseName . '.' . $this->images->extension;
                 // this is call method Resizes
                 $img->saveAs($path);
-               // $file->attachImage($path);
+                $this->attachImage($path);
+                unlink($path); // @ add to production
             }
-           // $this->image->attachImage($path);
-
-
-           // $this->save();
             return true;
         } else {
-          //  var_dump($this->errors); die;
             return false;
         }
     }

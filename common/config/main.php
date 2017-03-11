@@ -15,7 +15,7 @@ return [
             'imagesStorePath' => 'uploads/store', //path to origin images
             'imagesCachePath' => 'uploads/cache', //path to resized copies
             'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
-            'placeHolderPath' => '@webroot/uploads/placeHolder.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
+            'placeHolderPath' => '@app/uploads/placeHolder.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
         ],
     ],
 
