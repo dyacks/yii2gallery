@@ -11,9 +11,9 @@ use backend\models\Album;
 //use app\models\UploadForm;
 
 /**
- * Site controller
+ * Album controller
  */
-class AlbumController extends Controller
+class AlbumController extends Controller 
 {
     /**
      * @inheritdoc
@@ -65,7 +65,7 @@ class AlbumController extends Controller
 
     public function actionAdd(){
         $model = new Album();
-        return $this->render('createAlbum', ['model' => $model]);
+        return $this->render('create', ['model' => $model]);
     }
 
     public function actionUpload(){
@@ -82,7 +82,7 @@ class AlbumController extends Controller
             if ($model->upload()) {
                 $session = Yii::$app->session;
                 $session->addFlash('info', 'Вы успешно добавили новый альбом');
-                return $this->render('/photo\sortPhotos', ['model' => $model]);
+                return $this->render('/image\sort', ['model' => $model]);
             }
         }
         return $this->render('createAlbum', ['model' => $model]);
@@ -92,11 +92,11 @@ class AlbumController extends Controller
     public function actionSortest($id){
         $id = Yii::$app->request->get('id');
         $model = Album::findOne($id);
-        return $this->render('/photo\sortPhotos', ['model' => $model]);
+        return $this->render('/image\sort', ['model' => $model]);
     }
 
     public function actionSort(){
-        return $this->render('sortAlbums');
+        return $this->render('sort');
     }
 
     /**

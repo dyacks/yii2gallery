@@ -87,11 +87,11 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                         "items" => [
                                             [
                                                 "label" => "Добавить фото в альбом",
-                                                "url" => ["photo/add"],
+                                                "url" => ["image/add"],
                                                 "badge" => "new",
                                                 "badgeOptions" => ["class" => "label-success"],
                                             ],
-                                            ["label" => "Сортировать фото", "url" => ["photo/sort"]],
+                                            ["label" => "Сортировать фото", "url" => ["image/sort"]],
                                         ],
                                     ],
                                 ],

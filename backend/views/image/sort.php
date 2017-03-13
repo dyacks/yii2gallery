@@ -4,6 +4,8 @@ $this->title = 'sort photos';
 
 <?= $this->render('/album/flash') ?>
 
+<?php if(!empty($model)): ?>
+
 <?php $img = $model->getImage(); ?>
 
 <!-- https://yiiframework.com.ua/ru/doc/guide/2/output-data-widgets/ -->
@@ -22,6 +24,8 @@ $this->title = 'sort photos';
         ]
     ]
 ]) ?>
+
+<?php endif; ?>
 
 <div class="site-index">
 
