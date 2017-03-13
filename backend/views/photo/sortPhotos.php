@@ -1,10 +1,13 @@
 <?php
-    $this->title = 'sort photos';
+$this->title = 'sort photos';
 ?>
 
-<?= $this->render('flash') ?>
+<?= $this->render('/album/flash') ?>
 
 <?php $img = $model->getImage(); ?>
+
+<!-- https://yiiframework.com.ua/ru/doc/guide/2/output-data-widgets/ -->
+
 
 <?= \yii\widgets\DetailView::widget([
     'model' => $model,
@@ -14,6 +17,7 @@
         [
             'attribute' => 'images',
             'value' => "<img src='{$img->getUrl()}'>",
+            //'contentOptions' => ['class' => 'bg-red'],
             'format' => 'html',
         ]
     ]

@@ -82,10 +82,17 @@ class AlbumController extends Controller
             if ($model->upload()) {
                 $session = Yii::$app->session;
                 $session->addFlash('info', 'Вы успешно добавили новый альбом');
-                return $this->render('sortPhotos', ['model' => $model]);
+                return $this->render('/photo\sortPhotos', ['model' => $model]);
             }
         }
         return $this->render('createAlbum', ['model' => $model]);
+    }
+
+    // for Test / after delete
+    public function actionSortest($id){
+        $id = Yii::$app->request->get('id');
+        $model = Album::findOne($id);
+        return $this->render('/photo\sortPhotos', ['model' => $model]);
     }
 
     public function actionSort(){

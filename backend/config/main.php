@@ -45,6 +45,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'album/sortest/<id:\d+>' => 'album/sortest',
             ],
         ],
     ],
