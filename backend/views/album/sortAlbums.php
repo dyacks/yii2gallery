@@ -4,6 +4,8 @@
 
 <?= $this->render('flash') ?>
 
+<?php if(!empty($model)): ?>
+
 <?php $img = $model->getImage(); ?>
 
 <?= \yii\widgets\DetailView::widget([
@@ -18,6 +20,8 @@
         ]
     ]
 ]) ?>
+
+<?php endif; ?>
 
 <div class="site-index">
 

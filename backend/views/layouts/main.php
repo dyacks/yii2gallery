@@ -65,75 +65,37 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                         \yiister\gentelella\widgets\Menu::widget(
                             [
                                 "items" => [
-                                    //["label" => "Home", "url" => "/", "icon" => "home"],
                                     ["label" => "Просмотр галереи", "url" => "/", "icon" => "home"],
-                                    //["label" => "Layout", "url" => ["site/layout"], "icon" => "files-o"],
-                                    //["label" => "Добавить Альбом", "url" => ["?r=site/Album"], "icon" => "files-o"],
-                                    ["label" => "Добавить Альбом", "url" => ["album/add"], "icon" => "files-o"],
-                                    ["label" => "Сортировать Альбомы", "url" => ["album/sort"], "icon" => "th"],
-                                    //["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
                                     [
-                                        "label" => "Widgets",
-                                        "icon" => "th",
-                                        "url" => "#",
-                                        "items" => [
-                                            ["label" => "Menu", "url" => ["site/menu"]],
-                                            ["label" => "Panel", "url" => ["site/panel"]],
-                                        ],
-                                    ],
-                                    [
-                                        "label" => "Badges",
-                                        "url" => "#",
+                                        "label" => "Альбомы",
                                         "icon" => "table",
+                                        "url" => "#",
                                         "items" => [
                                             [
-                                                "label" => "Default",
-                                                "url" => "#",
-                                                "badge" => "123",
-                                            ],
-                                            [
-                                                "label" => "Success",
-                                                "url" => "#",
+                                                "label" => "Добавить альбом",
+                                                "url" => ["album/add"],
                                                 "badge" => "new",
                                                 "badgeOptions" => ["class" => "label-success"],
                                             ],
-                                            [
-                                                "label" => "Danger",
-                                                "url" => "#",
-                                                "badge" => "!",
-                                                "badgeOptions" => ["class" => "label-danger"],
-                                            ],
+                                            ["label" => "Сортировать альбомы", "url" => ["album/sort"]],
                                         ],
                                     ],
                                     [
-                                        "label" => "Multilevel",
+                                        "label" => "Фотографии",
+                                        "icon" => "th",
                                         "url" => "#",
-                                        "icon" => "table",
                                         "items" => [
                                             [
-                                                "label" => "Second level 1",
-                                                "url" => "#",
+                                                "label" => "Добавить фото в альбом",
+                                                "url" => ["photo/add"],
+                                                "badge" => "new",
+                                                "badgeOptions" => ["class" => "label-success"],
                                             ],
-                                            [
-                                                "label" => "Second level 2",
-                                                "url" => "#",
-                                                "items" => [
-                                                    [
-                                                        "label" => "Third level 1",
-                                                        "url" => "#",
-                                                    ],
-                                                    [
-                                                        "label" => "Third level 2",
-                                                        "url" => "#",
-                                                    ],
-                                                ],
-                                            ],
+                                            ["label" => "Сортировать фото", "url" => ["photo/sort"]],
                                         ],
                                     ],
                                 ],
-                            ]
-                        )
-                        ?>
+                            ]) ?>
                     </div>
 
                 </div>
