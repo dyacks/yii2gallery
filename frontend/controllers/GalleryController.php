@@ -12,11 +12,14 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use backend\models\Album;
+use yii\widgets\ListView;
+use yii\data\ActiveDataProvider;
 
 /**
- * Site controller
+ * Gallery controller
  */
-class SiteController extends Controller
+class GalleryController extends Controller
 {
 
     /**
@@ -73,7 +76,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        /*
+        $model = Album::find()->all();
+        include 'D:\dumphper.php';
+        dump($model);
+       */
+        $dataProvider = new ActiveDataProvider([
+            'query' => Album::find(),
+            'pagination' => [
+                'pageSize' => 12,
+            ],
+        ]);
+        return $this->render('index', ['gridDataProvider' => $dataProvider]);
     }
 
     /**
